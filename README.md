@@ -1,2 +1,2 @@
-# cpp-project-template
-My CPP project template with CMake, clang, Ninja
+# Delinx Website Generator
+why use markdown when you can use C++?
