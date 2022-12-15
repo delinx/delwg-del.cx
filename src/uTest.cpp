@@ -1,5 +1,5 @@
 // UNIT TESTS
-#include "html.hpp"
+#include "builder.hpp"
 #include <iostream>
 
 int passed = 0;
@@ -37,10 +37,16 @@ void assert(bool a, bool b, std::string str)
     std::cout << " : " << str << std::endl;
 }
 
-bool uTest_basicSyntax()
+bool uTest_MakeBasicSite()
 {
-    Html html;
+    // Builder *builder = new Builder();
+    Builder::Page page("index.html");
+    page.body = "body text";
+    page.header = "header text";
+    page.footer = "footer text";
 
+    std::cout << std::endl
+              << page.generate();
 
     return true;
 }
@@ -51,7 +57,7 @@ int main(int argc, char *argv[])
               << "--- UNIT TESTS ---" << std::endl
               << std::endl;
 
-    assert(uTest_basicSyntax(), true, "uTest_basicSyntax");
+    assert(uTest_MakeBasicSite(), true, "Make Basic Site");
 
     std::cout << std::endl
               << "--- UNIT TESTS END ---" << std::endl

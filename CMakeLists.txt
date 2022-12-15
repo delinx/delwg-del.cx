@@ -7,7 +7,7 @@ project(
   VERSION 0.0.1
   LANGUAGES CXX)
 
-add_executable(${PROJECT_NAME} src/main.cpp src/html.cpp)
+add_executable(${PROJECT_NAME}  src/html.cpp src/builder.cpp src/main.cpp )
 
 if(UNIT_TEST)
   add_definitions(-DUNIT_TEST)
