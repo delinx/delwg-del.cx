@@ -2,6 +2,7 @@
 #define BUILDER_HPP
 
 #include "types.hpp"
+#include <fstream>
 #include <iostream>
 #include <sstream>
 
@@ -14,9 +15,8 @@ class Builder
         std::string fileName = "";
         std::string path = "/";
 
-        std::string header = "";
+        std::string head = "";
         std::string body = "";
-        std::string footer = "";
 
         Page(std::string fileName);
 
@@ -24,6 +24,9 @@ class Builder
     };
 
     Page *pages = NULL;
+
+    static std::string templateToString(std::string path);
+    static std::string replaceString(std::string source, std::string target, std::string text);
     Builder();
 };
 
