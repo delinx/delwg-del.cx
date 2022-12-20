@@ -129,6 +129,16 @@ bool uTest_MarkdownImage()
     return (Builder::parseMarkdown("![Hello this is a test.](https://delwg.com)") == "<img src=\"https://delwg.com\" alt=\"Hello this is a test.\">");
 }
 
+bool uTest_list()
+{
+    return (Builder::parseMarkdown("*Hello this is a test.") == "<ul><li>Hello this is a test.</li></ul>");
+}
+
+bool uTest_listTwo()
+{
+    return (Builder::parseMarkdown("*Hello this is a test.\n*Hello this is a test.") == "<ul><li>Hello this is a test.</li><li>Hello this is a test.</li></ul>");
+}
+
 int main(int argc, char *argv[])
 {
     std::cout << "\n### UNIT TESTS ###\n";
@@ -153,6 +163,8 @@ int main(int argc, char *argv[])
     assert(uTest_MarkdownHeaderSix(), true, "Markdown Header 6");
     assert(uTest_MarkdownLink(), true, "Markdown Link");
     assert(uTest_MarkdownImage(), true, "Markdown Image");
+    assert(uTest_list(), true, "Markdown List");
+    assert(uTest_listTwo(), true, "Markdown List Two");
 
     std::cout << "\n### UNIT TESTS END ###\n\n";
     printResults();

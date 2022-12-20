@@ -141,6 +141,12 @@ std::string Builder::parseMarkdown(const std::string& input)
         }
     }
 
+    if(inList)
+    {
+        output += "</ul>";
+        inList = false;
+    }
+
     // std::cout << output << std::endl;
     return output;
 }
