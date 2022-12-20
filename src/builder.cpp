@@ -12,6 +12,12 @@ Builder::Page::Page(std::string fileName)
     Builder::Page::Page::fileName = fileName;
 }
 
+
+void Builder::Page::addStyleFile(std::string path)
+{
+    head += "<link rel=\"stylesheet\" href=\"" + path + "\">";
+}
+
 std::string Builder::Page::generate()
 {
     std::stringstream data;
@@ -151,6 +157,19 @@ std::string Builder::parseMarkdown(const std::string& input)
                 output += "<br>";
             }
         }
+        // divider \---
+        if(line.length() == 4)
+        {
+            if(line[0] == '\\' && line[1] == '-' && line[2] == '-' && line[3] == '-')
+            {
+                if(inParagraph)
+                {
+                    output += "</p>";
+                    inParagraph = false;
+                }
+                output += "<hr>";
+            }
+        }
         else if(line[0] == '#')
         {
             if(inParagraph)
@@ -209,7 +228,7 @@ std::string Builder::parseMarkdown(const std::string& input)
         }
         else
         {
-            if(!inParagraph)
+            if(!inParagraph && line != "")
             {
                 output += "<p>";
                 inParagraph = true;
@@ -230,6 +249,6 @@ std::string Builder::parseMarkdown(const std::string& input)
         inParagraph = false;
     }
 
-    std::cout << output << std::endl;
+    // std::cout << output << std::endl;
     return output;
 }
