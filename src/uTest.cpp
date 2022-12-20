@@ -34,7 +34,7 @@ void assert(bool a, bool b, std::string str)
                   << "\e[0m";
         failed++;
     }
-    std::cout << " : " << str << std::endl;
+    std::cout << " : " << str << "\n";
 }
 
 bool uTest_MakeBasicSite()
@@ -44,10 +44,8 @@ bool uTest_MakeBasicSite()
     page.body = "body text";
     page.head = "head text";
 
-    std::cout << std::endl
-              << page.generate();
-
-    return true;
+    // FIXME, this is not a good test, it's just a placeholder, add string comparison
+    return page.generate().length() == 109;
 }
 
 bool uTest_replaceStringSuccess()
@@ -62,16 +60,23 @@ bool uTest_replaceStringFail()
     return result == "Hello this is {TITLE}.";
 }
 
+bool uTest_fileToString()
+{
+    std::string path = "../../misc/";
+    std::string result = Builder::fileToString(path + "test.txt");
+    return result == "Hello World!\n";
+}
+
 bool uTest_MakeBasicSiteWithTemaplates()
 {
-    std::string path = "/home/del/cpp/delwg/web";
+    std::string path = "../../misc/";
     Builder::Page page("index.html");
-    page.head = Builder::replaceString(Builder::templateToString(path + "/template/head.template"), "{TITLE}", "Mihails Mozajevs");
+    page.head = Builder::replaceString(Builder::fileToString(path + "head.template"), "{TITLE}", "Mihails Mozajevs");
     page.body = "body text";
 
-    std::cout << std::endl
-              << page.generate();
-    return true;
+    // FIXME, this is not a good test, it's just a placeholder, add string comparison
+    // probably make template in misc much simpler too
+    return page.generate().length() == 382;
 }
 
 bool uTest_MarkdownParagraph()
@@ -114,16 +119,30 @@ bool uTest_MarkdownHeaderSix()
     return (Builder::parseMarkdown("######Hello this is a test.") == "<h6>Hello this is a test.</h6>");
 }
 
+bool uTest_MarkdownLink()
+{
+    return (Builder::parseMarkdown("[Hello this is a test.](https://delwg.com)") == "<a href=\"https://delwg.com\">Hello this is a test.</a>");
+}
+
+bool uTest_MarkdownImage()
+{
+    return (Builder::parseMarkdown("![Hello this is a test.](https://delwg.com)") == "<img src=\"https://delwg.com\" alt=\"Hello this is a test.\">");
+}
+
 int main(int argc, char *argv[])
 {
-    std::cout << std::endl
-              << "--- UNIT TESTS ---" << std::endl
-              << std::endl;
+    std::cout << "\n### UNIT TESTS ###\n";
 
+    std::cout << "\n--- BUILDER ---\n";
+    // basic generation
     assert(uTest_MakeBasicSite(), true, "Make Basic Site");
     assert(uTest_replaceStringSuccess(), true, "Replace String Success");
     assert(uTest_replaceStringFail(), true, "Replace String Not Found");
+    assert(uTest_fileToString(), true, "File to String");
     assert(uTest_MakeBasicSiteWithTemaplates(), true, "Make Basic Site With Templates");
+
+    std::cout << "\n--- MARKDOWN ---\n";
+    // markdown
     assert(uTest_MarkdownParagraph(), true, "Markdown Basic Paragraph");
     assert(uTest_MarkdownTwoParagraphs(), true, "Markdown Basic Paragraphs");
     assert(uTest_MarkdownHeader(), true, "Markdown Header 1");
@@ -132,11 +151,10 @@ int main(int argc, char *argv[])
     assert(uTest_MarkdownHeaderFour(), true, "Markdown Header 4");
     assert(uTest_MarkdownHeaderFive(), true, "Markdown Header 5");
     assert(uTest_MarkdownHeaderSix(), true, "Markdown Header 6");
+    assert(uTest_MarkdownLink(), true, "Markdown Link");
+    assert(uTest_MarkdownImage(), true, "Markdown Image");
 
-
-    std::cout << std::endl
-              << "--- UNIT TESTS END ---" << std::endl
-              << std::endl;
+    std::cout << "\n### UNIT TESTS END ###\n\n";
     printResults();
     return 0;
 }

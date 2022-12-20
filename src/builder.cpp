@@ -40,7 +40,7 @@ std::string Builder::Page::generate()
     return data.str();
 }
 
-std::string Builder::templateToString(std::string path)
+std::string Builder::fileToString(std::string path)
 {
     std::ifstream t(path);
     std::stringstream buffer;
