@@ -75,9 +75,16 @@ std::string Builder::parseMarkdown(const std::string& input)
     bool inList = false;
     bool inParagraph = false;
 
+    std::regex image_regex("!\\[(.+?)\\]\\((.+?)\\)");
+    std::regex link_regex("\\[(.+?)\\]\\((.+?)\\)");
 
     while(std::getline(f, line))
     {
+        // replace images
+        line = std::regex_replace(line, image_regex, "<img src=\"$2\" alt=\"$1\">");
+        // repace links
+        line = std::regex_replace(line, link_regex, "<a href=\"$2\">$1</a>");
+
         // replace \n to <br> code
         while(line.find("\\n") != std::string::npos)
         {
@@ -199,34 +206,6 @@ std::string Builder::parseMarkdown(const std::string& input)
             output += "</ul>";
             inList = false;
             output += line;
-        }
-        else if(line[0] == '[')
-        {
-            if(inParagraph)
-            {
-                output += "</p>";
-                inParagraph = false;
-            }
-
-            u64 end = line.find("]");
-            u64 start = line.find("(");
-            std::string text = line.substr(1, end - 1);
-            std::string link = line.substr(start + 1, line.length() - start - 2);
-            output += "<a href=\"" + link + "\">" + text + "</a>";
-        }
-        else if(line[0] == '!')
-        {
-            if(inParagraph)
-            {
-                output += "</p>";
-                inParagraph = false;
-            }
-
-            u64 end = line.find("]");
-            u64 start = line.find("(");
-            std::string text = line.substr(2, end - 2);
-            std::string link = line.substr(start + 1, line.length() - start - 2);
-            output += "<img src=\"" + link + "\" alt=\"" + text + "\">";
         }
         else
         {

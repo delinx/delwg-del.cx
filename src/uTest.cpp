@@ -146,12 +146,12 @@ bool uTest_MarkdownHeaderSix()
 
 bool uTest_MarkdownLink()
 {
-    return (Builder::parseMarkdown("[Hello this is a test.](https://delwg.com)") == "<a href=\"https://delwg.com\">Hello this is a test.</a>");
+    return (Builder::parseMarkdown("[Hello this is a test.](https://delwg.com)") == "<p><a href=\"https://delwg.com\">Hello this is a test.</a></p>");
 }
 
 bool uTest_MarkdownImage()
 {
-    return (Builder::parseMarkdown("![Hello this is a test.](https://delwg.com)") == "<img src=\"https://delwg.com\" alt=\"Hello this is a test.\">");
+    return (Builder::parseMarkdown("![Hello this is a test.](https://delwg.com)") == "<p><img src=\"https://delwg.com\" alt=\"Hello this is a test.\"></p>");
 }
 
 bool uTest_list()
