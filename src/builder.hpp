@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <string>
 
 class Builder
 {
@@ -19,14 +20,14 @@ class Builder
         std::string body = "";
 
         Page(std::string fileName);
-
         std::string generate();
     };
 
-    Page *pages = NULL;
+    Page* pages = NULL;
 
     static std::string templateToString(std::string path);
     static std::string replaceString(std::string source, std::string target, std::string text);
+    static std::string parseMarkdown(const std::string& input);
     Builder();
 };
 

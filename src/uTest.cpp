@@ -74,6 +74,46 @@ bool uTest_MakeBasicSiteWithTemaplates()
     return true;
 }
 
+bool uTest_MarkdownParagraph()
+{
+    return (Builder::parseMarkdown("Hello this is a test.") == "<p>Hello this is a test.</p>");
+}
+
+bool uTest_MarkdownTwoParagraphs()
+{
+    return (Builder::parseMarkdown("Hello this is a test.\n\nThis is a second paragraph.") == "<p>Hello this is a test.</p><br><p>This is a second paragraph.</p>");
+}
+
+bool uTest_MarkdownHeader()
+{
+    return (Builder::parseMarkdown("#Hello this is a test.") == "<h1>Hello this is a test.</h1>");
+}
+
+bool uTest_MarkdownHeaderTwo()
+{
+    return (Builder::parseMarkdown("##Hello this is a test.") == "<h2>Hello this is a test.</h2>");
+}
+
+bool uTest_MarkdownHeaderThree()
+{
+    return (Builder::parseMarkdown("###Hello this is a test.") == "<h3>Hello this is a test.</h3>");
+}
+
+bool uTest_MarkdownHeaderFour()
+{
+    return (Builder::parseMarkdown("####Hello this is a test.") == "<h4>Hello this is a test.</h4>");
+}
+
+bool uTest_MarkdownHeaderFive()
+{
+    return (Builder::parseMarkdown("#####Hello this is a test.") == "<h5>Hello this is a test.</h5>");
+}
+
+bool uTest_MarkdownHeaderSix()
+{
+    return (Builder::parseMarkdown("######Hello this is a test.") == "<h6>Hello this is a test.</h6>");
+}
+
 int main(int argc, char *argv[])
 {
     std::cout << std::endl
@@ -84,6 +124,15 @@ int main(int argc, char *argv[])
     assert(uTest_replaceStringSuccess(), true, "Replace String Success");
     assert(uTest_replaceStringFail(), true, "Replace String Not Found");
     assert(uTest_MakeBasicSiteWithTemaplates(), true, "Make Basic Site With Templates");
+    assert(uTest_MarkdownParagraph(), true, "Markdown Basic Paragraph");
+    assert(uTest_MarkdownTwoParagraphs(), true, "Markdown Basic Paragraphs");
+    assert(uTest_MarkdownHeader(), true, "Markdown Header 1");
+    assert(uTest_MarkdownHeaderTwo(), true, "Markdown Header 2");
+    assert(uTest_MarkdownHeaderThree(), true, "Markdown Header 3");
+    assert(uTest_MarkdownHeaderFour(), true, "Markdown Header 4");
+    assert(uTest_MarkdownHeaderFive(), true, "Markdown Header 5");
+    assert(uTest_MarkdownHeaderSix(), true, "Markdown Header 6");
+
 
     std::cout << std::endl
               << "--- UNIT TESTS END ---" << std::endl
