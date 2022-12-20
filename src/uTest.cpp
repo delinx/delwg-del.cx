@@ -164,6 +164,18 @@ bool uTest_listTwo()
     return (Builder::parseMarkdown("*Hello this is a test.\n*Hello this is a test.") == "<ul><li>Hello this is a test.</li><li>Hello this is a test.</li></ul>");
 }
 
+bool uTest_bold()
+{
+    return (Builder::parseMarkdown("Hello this **is** a test.") == "<p>Hello this <b>is</b> a test.</p>");
+}
+
+bool uTest_italic()
+{
+    return (Builder::parseMarkdown("Hello this __is__ a test.") == "<p>Hello this <i>is</i> a test.</p>");
+}
+
+
+
 int main(int argc, char *argv[])
 {
     std::cout << "\n### UNIT TESTS ###\n";
@@ -195,6 +207,8 @@ int main(int argc, char *argv[])
     assert(uTest_MarkdownImage(), true, "Image");
     assert(uTest_list(), true, "List");
     assert(uTest_listTwo(), true, "List Two");
+    assert(uTest_bold(), true, "Bold");
+    assert(uTest_italic(), true, "Italic");
 
     std::cout << "\n### UNIT TESTS END ###\n\n";
     printResults();

@@ -79,7 +79,7 @@ std::string Builder::parseMarkdown(const std::string& input)
     while(std::getline(f, line))
     {
         // replace \n to <br> code
-        if(line.find("\\n") != std::string::npos)
+        while(line.find("\\n") != std::string::npos)
         {
             u64 pos = line.find("\\n");
             if(pos + 2 < line.length())
@@ -96,6 +96,38 @@ std::string Builder::parseMarkdown(const std::string& input)
             else  // in case we are at the end of the line
             {
                 line.replace(pos, 2, "<br>");
+            }
+        }
+        // bold
+        bool bold = false;
+        while(line.find("**") != std::string::npos)
+        {
+            u64 pos = line.find("**");
+            if(!bold)
+            {
+                line.replace(pos, 2, "<b>");
+                bold = true;
+            }
+            else
+            {
+                line.replace(pos, 2, "</b>");
+                bold = false;
+            }
+        }
+        // italic
+        bool italic = false;
+        while(line.find("__") != std::string::npos)
+        {
+            u64 pos = line.find("__");
+            if(!bold)
+            {
+                line.replace(pos, 2, "<i>");
+                bold = true;
+            }
+            else
+            {
+                line.replace(pos, 2, "</i>");
+                bold = false;
             }
         }
 
@@ -219,6 +251,6 @@ std::string Builder::parseMarkdown(const std::string& input)
         inParagraph = false;
     }
 
-    // std::cout << output << std::endl;
+    std::cout << output << std::endl;
     return output;
 }
