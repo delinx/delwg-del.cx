@@ -75,10 +75,10 @@ std::string Builder::parseMarkdown(const std::string& input)
     bool inList = false;
     bool inParagraph = false;
 
-    // replace \n to <br> code
 
     while(std::getline(f, line))
     {
+        // replace \n to <br> code
         if(line.find("\\n") != std::string::npos)
         {
             u64 pos = line.find("\\n");
