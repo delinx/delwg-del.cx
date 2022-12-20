@@ -73,16 +73,53 @@ std::string Builder::parseMarkdown(const std::string& input)
     std::string line;
 
     bool inList = false;
+    bool inParagraph = false;
+
+    // replace \n to <br> code
 
     while(std::getline(f, line))
     {
+        if(line.find("\\n") != std::string::npos)
+        {
+            u64 pos = line.find("\\n");
+            if(pos + 2 < line.length())
+            {
+                if(line[pos + 2] == ' ')
+                {
+                    line.replace(pos, 3, "<br>");
+                }
+                else
+                {
+                    line.replace(pos, 2, "<br>");
+                }
+            }
+            else  // in case we are at the end of the line
+            {
+                line.replace(pos, 2, "<br>");
+            }
+        }
+
         // beginning types
         if(line == "")
         {
-            output += "<br>";
+            if(inParagraph)
+            {
+                output += "</p>";
+                inParagraph = false;
+            }
+            else
+            {
+                output += "<br>";
+            }
         }
         else if(line[0] == '#')
         {
+            if(inParagraph)
+            {
+                output += "</p>";
+                inParagraph = false;
+            }
+
             u8 hlevel = 0;
             for(size_t i = 0; i < line.length(); i++)
             {
@@ -106,6 +143,12 @@ std::string Builder::parseMarkdown(const std::string& input)
         }
         else if(line[0] == '*')
         {
+            if(inParagraph)
+            {
+                output += "</p>";
+                inParagraph = false;
+            }
+
             if(!inList)
             {
                 output += "<ul>";
@@ -115,12 +158,24 @@ std::string Builder::parseMarkdown(const std::string& input)
         }
         else if(line[0] != '*' && inList)
         {
+            if(inParagraph)
+            {
+                output += "</p>";
+                inParagraph = false;
+            }
+
             output += "</ul>";
             inList = false;
             output += line;
         }
         else if(line[0] == '[')
         {
+            if(inParagraph)
+            {
+                output += "</p>";
+                inParagraph = false;
+            }
+
             u64 end = line.find("]");
             u64 start = line.find("(");
             std::string text = line.substr(1, end - 1);
@@ -129,6 +184,12 @@ std::string Builder::parseMarkdown(const std::string& input)
         }
         else if(line[0] == '!')
         {
+            if(inParagraph)
+            {
+                output += "</p>";
+                inParagraph = false;
+            }
+
             u64 end = line.find("]");
             u64 start = line.find("(");
             std::string text = line.substr(2, end - 2);
@@ -137,7 +198,12 @@ std::string Builder::parseMarkdown(const std::string& input)
         }
         else
         {
-            output += "<p>" + line + "</p>";
+            if(!inParagraph)
+            {
+                output += "<p>";
+                inParagraph = true;
+            }
+            output += line;
         }
     }
 
@@ -145,6 +211,12 @@ std::string Builder::parseMarkdown(const std::string& input)
     {
         output += "</ul>";
         inList = false;
+    }
+
+    if(inParagraph)
+    {
+        output += "</p>";
+        inParagraph = false;
     }
 
     // std::cout << output << std::endl;

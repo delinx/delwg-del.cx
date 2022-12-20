@@ -84,9 +84,34 @@ bool uTest_MarkdownParagraph()
     return (Builder::parseMarkdown("Hello this is a test.") == "<p>Hello this is a test.</p>");
 }
 
+bool uTest_MarkdownParagraphWithNewLine()
+{
+    return (Builder::parseMarkdown("Hello this is a \ntest.") == "<p>Hello this is a test.</p>");
+}
+
 bool uTest_MarkdownTwoParagraphs()
 {
-    return (Builder::parseMarkdown("Hello this is a test.\n\nThis is a second paragraph.") == "<p>Hello this is a test.</p><br><p>This is a second paragraph.</p>");
+    return (Builder::parseMarkdown("Hello this is a test.\n\nThis is a second paragraph.") == "<p>Hello this is a test.</p><p>This is a second paragraph.</p>");
+}
+
+bool uTest_MarkdownNewLineSymbol()
+{
+    return (Builder::parseMarkdown("Hello this is a test.\\nThis is a second line test.") == "<p>Hello this is a test.<br>This is a second line test.</p>");
+}
+
+bool uTest_MarkdownNewLineSymbolWithSpace()
+{
+    return (Builder::parseMarkdown("Hello this is a test.\\n This is a second line test.") == "<p>Hello this is a test.<br>This is a second line test.</p>");
+}
+
+bool uTest_MarkdownNewLineSymbolEndLine()
+{
+    return (Builder::parseMarkdown("Hello this is a test.\\n") == "<p>Hello this is a test.<br></p>");
+}
+
+bool uTest_MarkdownNewLineSymbolEndLineWithSpace()
+{
+    return (Builder::parseMarkdown("Hello this is a test.\\n ") == "<p>Hello this is a test.<br></p>");
 }
 
 bool uTest_MarkdownHeader()
@@ -153,18 +178,23 @@ int main(int argc, char *argv[])
 
     std::cout << "\n--- MARKDOWN ---\n";
     // markdown
-    assert(uTest_MarkdownParagraph(), true, "Markdown Basic Paragraph");
-    assert(uTest_MarkdownTwoParagraphs(), true, "Markdown Basic Paragraphs");
-    assert(uTest_MarkdownHeader(), true, "Markdown Header 1");
-    assert(uTest_MarkdownHeaderTwo(), true, "Markdown Header 2");
-    assert(uTest_MarkdownHeaderThree(), true, "Markdown Header 3");
-    assert(uTest_MarkdownHeaderFour(), true, "Markdown Header 4");
-    assert(uTest_MarkdownHeaderFive(), true, "Markdown Header 5");
-    assert(uTest_MarkdownHeaderSix(), true, "Markdown Header 6");
-    assert(uTest_MarkdownLink(), true, "Markdown Link");
-    assert(uTest_MarkdownImage(), true, "Markdown Image");
-    assert(uTest_list(), true, "Markdown List");
-    assert(uTest_listTwo(), true, "Markdown List Two");
+    assert(uTest_MarkdownParagraph(), true, "Paragraph");
+    assert(uTest_MarkdownParagraphWithNewLine(), true, "Paragraph With New Line");
+    assert(uTest_MarkdownNewLineSymbol(), true, "New Line Symbol");
+    assert(uTest_MarkdownNewLineSymbolWithSpace(), true, "New Line Symbol With Space");
+    assert(uTest_MarkdownNewLineSymbolEndLine(), true, "New Line Symbol At End Of Line");
+    assert(uTest_MarkdownNewLineSymbolEndLineWithSpace(), true, "New Line Symbol At End Of Line With Space");
+    assert(uTest_MarkdownTwoParagraphs(), true, "Paragraphs");
+    assert(uTest_MarkdownHeader(), true, "Header 1");
+    assert(uTest_MarkdownHeaderTwo(), true, "Header 2");
+    assert(uTest_MarkdownHeaderThree(), true, "Header 3");
+    assert(uTest_MarkdownHeaderFour(), true, "Header 4");
+    assert(uTest_MarkdownHeaderFive(), true, "Header 5");
+    assert(uTest_MarkdownHeaderSix(), true, "Header 6");
+    assert(uTest_MarkdownLink(), true, "Link");
+    assert(uTest_MarkdownImage(), true, "Image");
+    assert(uTest_list(), true, "List");
+    assert(uTest_listTwo(), true, "List Two");
 
     std::cout << "\n### UNIT TESTS END ###\n\n";
     printResults();
