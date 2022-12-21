@@ -18,6 +18,14 @@ void Builder::Page::addStyleFile(std::string path)
     head += "<link rel=\"stylesheet\" href=\"" + path + "\">";
 }
 
+void Builder::Page::save()
+{
+    std::ofstream file;
+    file.open(path + fileName);
+    file << generate();
+    file.close();
+}
+
 std::string Builder::Page::generate()
 {
     std::stringstream data;
@@ -87,6 +95,15 @@ std::string Builder::parseMarkdown(const std::string& input)
 
     while(std::getline(f, line))
     {
+        // ignore TAG lines
+        if(line.length() > 7)
+        {
+            if(line.substr(0, 7) == "<!TAG!>")
+            {
+                continue;
+            }
+        }
+
         // replace images complex
         line = std::regex_replace(line, image_regex, "<img src=\"$2\" alt=\"$1\" style=\"$3\">");
         // replace images simple
@@ -161,17 +178,14 @@ std::string Builder::parseMarkdown(const std::string& input)
             }
         }
         // divider \---
-        if(line.length() == 4)
+        if(line.length() == 4 && line.substr(0, 4) == "\\---")
         {
-            if(line[0] == '\\' && line[1] == '-' && line[2] == '-' && line[3] == '-')
+            if(inParagraph)
             {
-                if(inParagraph)
-                {
-                    output += "</p>";
-                    inParagraph = false;
-                }
-                output += "<hr>";
+                output += "</p>";
+                inParagraph = false;
             }
+            output += "<hr>";
         }
         else if(line[0] == '#')
         {

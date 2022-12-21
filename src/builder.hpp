@@ -23,6 +23,7 @@ class Builder
         Page(std::string fileName);
         std::string generate();
         void addStyleFile(std::string path);
+        void save();
     };
 
     Page* pages = NULL;

@@ -184,6 +184,11 @@ bool uTest_divider()
     return (Builder::parseMarkdown("Hello this is a test.\n\\---\nThis is a second paragraph.") == "<p>Hello this is a test.</p><hr><p>This is a second paragraph.</p>");
 }
 
+bool uTest_ignoreTag()
+{
+    return (Builder::parseMarkdown("<!TAG!>This is tag comment, it cannot be parsed\ntest") == "<p>test</p>");
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -220,8 +225,9 @@ int main(int argc, char *argv[])
     assert(uTest_bold(), true, "Bold");
     assert(uTest_italic(), true, "Italic");
     assert(uTest_divider(), true, "Divider");
+    assert(uTest_ignoreTag(), true, "Ignore <!TAG!> Tag");
 
-    // std::cout << "\n### UNIT TESTS END ###\n\n";
+    std::cout << "\n### UNIT TESTS END ###\n\n";
     printResults();
     return 0;
 }
