@@ -32,3 +32,8 @@
 *.app
 
 build/
+
+# template stuff
+
+web/*.html
+!web/templates/*.html
