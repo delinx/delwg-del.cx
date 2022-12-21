@@ -1,11 +1,9 @@
-## Who am I?
+## Hello
 ![Me](img/profile.jpeg){max-width:100px;padding:0px 10px 10px 10px;float:right;margin-top: -20px;}
 I am a BA Game Design graduate pursuing MA in Game Design.
 \n Interested in low-level and system-level programming. 
 \n Firmly believe in fair and open-source software.
-\---
-## Where am I? 
-I have been living in Kent, UK for 10 years now and I love it here.
+\n I have been living in Kent, UK for 10 years now and I love it here.
 \---
 ## Skills 
 - ** Programming ** 
@@ -25,7 +23,7 @@ I have been living in Kent, UK for 10 years now and I love it here.
 \n -- If there is a config, I must tinker.
 \n -- Spending 2 hours automating a 5 minute task.
 \---
-## Study history
+## Study
 ** Canterbury Christ Church University **
 \n - (2022-2023) Games Design MA
 \n - (2019-2022) Games Design BA with First-Class Honours
@@ -36,7 +34,7 @@ I have been living in Kent, UK for 10 years now and I love it here.
 ** Chaucer Technology School **
 \n - (2013-2015) GCSEs
 \---
-## Work history
+## Work
 ** (2016 - now) Freelance **
 \n - Python
 \n -- Developed a user-facing interface for students of an educational facility.
@@ -56,7 +54,7 @@ I have been living in Kent, UK for 10 years now and I love it here.
 \n - 3D modelling and texturing arcade cabinets for use in-game engine.
 \n - Project design and managment. 
 \---
-## Few things I worked on
+## Few projects
 ** Fixedsys Modern [Custom vector font based on old bitmap font] **
 \nI am a big fan of Fixedsys Excelsior, which is an old DOS era bitmap font. Sadly with the average 
 resolution increasing, it became too small for comfortable use. And since it is a bitmap font, 
