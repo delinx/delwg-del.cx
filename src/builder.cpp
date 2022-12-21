@@ -81,13 +81,16 @@ std::string Builder::parseMarkdown(const std::string& input)
     bool inList = false;
     bool inParagraph = false;
 
-    std::regex image_regex("!\\[(.+?)\\]\\((.+?)\\)");
+    std::regex image_regex("!\\[(.+?)\\]\\((.+?)\\)\\{(.+?)\\}");
+    std::regex image_regex_simple("!\\[(.+?)\\]\\((.+?)\\)");
     std::regex link_regex("\\[(.+?)\\]\\((.+?)\\)");
 
     while(std::getline(f, line))
     {
-        // replace images
-        line = std::regex_replace(line, image_regex, "<img src=\"$2\" alt=\"$1\">");
+        // replace images complex
+        line = std::regex_replace(line, image_regex, "<img src=\"$2\" alt=\"$1\" style=\"$3\">");
+        // replace images simple
+        line = std::regex_replace(line, image_regex_simple, "<img src=\"$2\" alt=\"$1\">");
         // repace links
         line = std::regex_replace(line, link_regex, "<a href=\"$2\">$1</a>");
 

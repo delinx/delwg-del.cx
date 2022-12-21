@@ -149,9 +149,14 @@ bool uTest_MarkdownLink()
     return (Builder::parseMarkdown("[Hello this is a test.](https://delwg.com)") == "<p><a href=\"https://delwg.com\">Hello this is a test.</a></p>");
 }
 
-bool uTest_MarkdownImage()
+bool uTest_MarkdownImageSimple()
 {
     return (Builder::parseMarkdown("![Hello this is a test.](https://delwg.com)") == "<p><img src=\"https://delwg.com\" alt=\"Hello this is a test.\"></p>");
+}
+
+bool uTest_MarkdownImageWithStyle()
+{
+    return (Builder::parseMarkdown("![Hello this is a test.](https://delwg.com){width:100px;}") == "<p><img src=\"https://delwg.com\" alt=\"Hello this is a test.\" style=\"width:100px;\"></p>");
 }
 
 bool uTest_list()
@@ -208,7 +213,8 @@ int main(int argc, char *argv[])
     assert(uTest_MarkdownHeaderFive(), true, "Header 5");
     assert(uTest_MarkdownHeaderSix(), true, "Header 6");
     assert(uTest_MarkdownLink(), true, "Link");
-    assert(uTest_MarkdownImage(), true, "Image");
+    assert(uTest_MarkdownImageSimple(), true, "Image");
+    assert(uTest_MarkdownImageWithStyle(), true, "Image With Style");
     assert(uTest_list(), true, "List");
     assert(uTest_listTwo(), true, "List Two");
     assert(uTest_bold(), true, "Bold");
