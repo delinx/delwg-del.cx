@@ -186,7 +186,7 @@ bool uTest_divider()
 
 bool uTest_ignoreTag()
 {
-    return (Builder::parseMarkdown("<!TAG!>This is tag comment, it cannot be parsed\ntest") == "<p>test</p>");
+    return (Builder::parseMarkdown("<<TAG>>This is tag comment, it cannot be parsed\ntest") == "<p>test</p>");
 }
 
 

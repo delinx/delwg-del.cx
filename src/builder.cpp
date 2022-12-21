@@ -98,7 +98,7 @@ std::string Builder::parseMarkdown(const std::string& input)
         // ignore TAG lines
         if(line.length() > 7)
         {
-            if(line.substr(0, 7) == "<!TAG!>")
+            if(line.substr(0, 7) == "<<TAG>>")
             {
                 continue;
             }
