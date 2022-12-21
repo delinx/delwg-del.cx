@@ -1,5 +1,5 @@
 ## Hello
-![Me](img/profile.jpeg){max-width:100px;padding:0px 10px 10px 10px;float:right;margin-top: -20px;}
+![Me](img/profile.jpeg){max-width:100px;padding:0px 10px 10px 10px;float:right;margin-top: -40px;}
 I am a BA Game Design graduate pursuing MA in Game Design.
 \n Interested in low-level and system-level programming. 
 \n Firmly believe in fair and open-source software.
