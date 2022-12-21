@@ -60,6 +60,12 @@ bool uTest_replaceStringFail()
     return result == "Hello this is {TITLE}.";
 }
 
+bool uTest_replaceStringAll()
+{
+    std::string result = Builder::replaceStringAll("Hello this is {TITLE} and {TITLE}.", "{TITLE}", "me");
+    return result == "Hello this is me and me.";
+}
+
 bool uTest_fileToString()
 {
     std::string path = "../../misc/";
@@ -199,6 +205,7 @@ int main(int argc, char *argv[])
     assert(uTest_MakeBasicSite(), true, "Make Basic Site");
     assert(uTest_replaceStringSuccess(), true, "Replace String Success");
     assert(uTest_replaceStringFail(), true, "Replace String Not Found");
+    assert(uTest_replaceStringAll(), true, "Replace String All occurances");
     assert(uTest_fileToString(), true, "File to String");
     assert(uTest_MakeBasicSiteWithTemaplates(), true, "Make Basic Site With Templates");
 

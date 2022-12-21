@@ -30,6 +30,7 @@ class Builder
 
     static std::string fileToString(std::string path);
     static std::string replaceString(std::string source, std::string target, std::string text);
+    static std::string replaceStringAll(std::string source, std::string target, std::string text);
     static std::string parseMarkdown(const std::string& input);
     Builder();
 };

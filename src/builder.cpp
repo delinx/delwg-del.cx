@@ -72,6 +72,16 @@ std::string Builder::replaceString(std::string source, std::string target, std::
     return source;
 }
 
+std::string Builder::replaceStringAll(std::string source, std::string target, std::string text)
+{
+    std::string temp = source;
+    while(temp.find(target) != std::string::npos)
+    {
+        temp.replace(temp.find(target), target.length(), text);
+    }
+    return temp;
+}
+
 // Empty line is a new line
 // # is a header
 // * is a list

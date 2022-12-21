@@ -30,7 +30,8 @@ int main(int argc, char* argv[])
 
     // Global
     std::string templatesPath = "../../web/template/";
-    std::string menu = Builder::fileToString(templatesPath + "menu.html");
+    std::string menu = Builder::replaceStringAll(Builder::fileToString(templatesPath + "menu.html"), "{PATH}", "");
+    std::string menuBlog = Builder::replaceStringAll(Builder::fileToString(templatesPath + "menu.html"), "{PATH}", "../");
     std::string footer = Builder::fileToString(templatesPath + "footer.html");
     footer = Builder::replaceString(footer, "{GENERATED_DATE}", CurrentDate());
     footer = Builder::replaceString(footer, "{CURRENT_YEAR}", CurrentYear());
@@ -72,10 +73,19 @@ int main(int argc, char* argv[])
         blogUniquePage.addStyleFile("../template/style.css");
         blogUniquePage.addStyleFile("../template/textStyle.css");
         blogUniquePage.path = "../../web/blog/";
-        blogUniquePage.body += menu;
+        blogUniquePage.body += menuBlog;
         blogUniquePage.body += Builder::parseMarkdown(Builder::fileToString("../../web/blog/" + blogs[i]));
         blogUniquePage.body += footer;
-        blogLinks += "<a href=\"blog/" + blogUniquePage.fileName + "\">" + Builder::replaceString(blogs[i], ".md", "") + "</a><br>";
+
+        // extract info about blog from .md comment tag <<TAG>>
+        // format: '<<TAG>>title|date<<TAG>>' seperated on '|'
+        std::string blogInfo = Builder::fileToString("../../web/blog/" + blogs[i]);
+        blogInfo = blogInfo.substr(blogInfo.find("<<TAG>>") + 7, blogInfo.find("<<TAG>>", blogInfo.find("<<TAG>>") + 7) - blogInfo.find("<<TAG>>") - 7);
+        // split on '|'
+        std::string blogTitle = blogInfo.substr(0, blogInfo.find("|"));
+        std::string blogDate = blogInfo.substr(blogInfo.find("|") + 1, blogInfo.length() - blogInfo.find("|") - 1);
+        blogLinks += "<a href=\"blog/" + blogUniquePage.fileName + "\">" + blogTitle + "</a> " + blogDate + " <br>";
+
         blogUniquePage.save();
     }
     blogPage.body += Builder::replaceString(Builder::fileToString(templatesPath + "blog.html"), "{BLOG_LINKS}", blogLinks);
