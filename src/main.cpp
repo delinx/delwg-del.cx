@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
 
     blogPage.body += menu;
     // build all the blog pages and add links to them
-    std::string blogs[] = { "generator.md", "keyboards.md", "vim.md" };
+    std::string blogs[] = { "generator.md", "vim.md", "keyboards.md" };
     std::string blogLinks;
     for(i32 i = 0; i < sizeof(blogs) / sizeof(blogs[0]); i++)
     {
@@ -84,7 +84,7 @@ int main(int argc, char* argv[])
         // split on '|'
         std::string blogTitle = blogInfo.substr(0, blogInfo.find("|"));
         std::string blogDate = blogInfo.substr(blogInfo.find("|") + 1, blogInfo.length() - blogInfo.find("|") - 1);
-        blogLinks += "<a href=\"blog/" + blogUniquePage.fileName + "\">" + blogTitle + "</a> " + blogDate + " <br>";
+        blogLinks += "[" + blogDate + "] <a href=\"blog/" + blogUniquePage.fileName + "\">" + blogTitle + "</a><br>";
 
         blogUniquePage.save();
     }
