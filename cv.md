@@ -45,7 +45,7 @@ I am a BA Game Design graduate pursuing MA in Game Design.
 \n - System adminestration
 \n -- Setup hardware and software for linux servers, routers.
 \n - Design
-\n -- Designed and published [morden version of old fixedsys font](https://github.com/delinx/Fixedsys-Modern).
+\n -- Designed and published [modern version of old fixedsys font](https://github.com/delinx/Fixedsys-Modern).
 
 ** (2017 - now) Metafy.gg (Formally Gamersrdy) **
 \n - Individual eSports coach focused on CS:GO / FPS
