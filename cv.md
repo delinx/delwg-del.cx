@@ -79,4 +79,3 @@ levels and combat foes. Trailer of the demo can be found [here](https://youtu.be
 internship results can be found [here](https://youtu.be/SKBBQA5U170). The project was [taken further](https://cdn.discordapp.com/attachments/705814823354499092/976929686368174100/unknown-33.jpg) by MA 2021 students, I will be joining 
 development team once again during my own MA in 2022.
 
-
