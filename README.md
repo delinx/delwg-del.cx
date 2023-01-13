@@ -1,3 +1,3 @@
 # delwg-del.cx
-My personal website generated using delwg!
-https://github.com/delinx/delwg
+My personal website generated using delwgrust!
+https://github.com/delinx/delwgrust
