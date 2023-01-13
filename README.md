@@ -1,3 +1,6 @@
 # delwg-del.cx
-My personal website generated using delwgrust!
+This repo contains markdown files and other template components for my website
+
 https://github.com/delinx/delwgrust
+
+# https://del.cx/
