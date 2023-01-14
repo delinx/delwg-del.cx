@@ -25,7 +25,9 @@ I started this project because I wanted a simple tool to generate my website fro
 ### Static Website Generator Rust
 Static website generator is a wonderful project for learning a new language, and you can make it as simple or complex as you wish. In its heart, static site generation is just a file/string manipulation logic. While this project originally started in C++, I later moved it to Rust, both as a means of learning it and because I consider it a better-fitting language for this task. 
 
-This website is actually generated using it! You can find repositories below for the generator itself and the markdown files it uses. 
+I found myself enjoying Rust; while I am still learning it, I can appreciate a lot of architectural and design decisions involved. Initially, I gave Rust a go a couple of years back, but I found it challenging to get into it, later I got interested in Zig and spent significant time learning its standard library; while [Zig](https://ziglang.org/) is not ready for production use yet, it certainly gave me an appreciation for Rust, and familiarised me with this style of syntax. 
+
+This website is actually generated using this generator! You can find repositories below for the generator itself and the markdown files it uses. 
 
 [GitHub Repo](https://github.com/delinx/delwgrust) 
 \n[GitHub Repo for this site](https://github.com/delinx/delwg-del.cx) 
