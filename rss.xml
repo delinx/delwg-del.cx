@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+    <title>del.cx Personal Site</title>
+    <link>https://www.del.cx</link>
+    <description>del.cx Personal Site/Blog</description>
+    <category>Development</category> 
+    <category>Programming</category> 
+    <category>Personal</category> 
+    <category>Delinx</category>
+    <managingEditor>mail@del.cx</managingEditor>
+    <webMaster>mail@del.cx</webMaster>
+    <copyright>Copyright 2021-{YEAR} Mihails 'Delinx' Mozajevs.</copyright> 
+    <generator>delwgrust</generator>
+    <lastBuildDate>{LAST_BUILD_DATE}</lastBuildDate>
+    <pubDate>{LAST_PUB_DATE}</pubDate>
+    {ITEMS}
+</channel>
+
+</rss> 

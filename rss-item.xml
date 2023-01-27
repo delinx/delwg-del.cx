@@ -1,0 +1,8 @@
+<!-- Update time: {TIME} --> 
+<item>
+    <title>{TITLE}</title>
+    <link>{LINK}</link>
+    <description>{DESCRIPTION}</description>
+    <author>mail@del.cx</author> 
+    <pubDate>{PUB_DATE}</pubDate>
+</item>

@@ -7,9 +7,9 @@ I am a BA Game Design graduate pursuing MA in Game Design.
 \---
 ## Skills 
 - ** Programming ** 
-\n -- C++11/14, C, Python, C#. 
+\n -- Rust, C++11/14, C, Python, C#. 
 \n - ** Have interest in ** 
-\n -- Zig, Rust.
+\n -- Zig, embedded.
 \n - ** System adminestration ** 
 \n -- Linux, pfsense, hardware.
 \n - ** 3D modelling ** 
@@ -53,29 +53,5 @@ I am a BA Game Design graduate pursuing MA in Game Design.
 ** (2020, 2022-23) Research Internship - Arcade Britannia VR **
 \n - 3D modelling and texturing arcade cabinets for use in-game engine.
 \n - Project design and managment. 
-\---
-## Few projects
-** Fixedsys Modern [Custom vector font based on old bitmap font] **
-\nI am a big fan of Fixedsys Excelsior, which is an old DOS era bitmap font. Sadly with the average 
-resolution increasing, it became too small for comfortable use. And since it is a bitmap font, 
-scaling results in blurry results. So eventually, I was forced to switch, but I have always missed 
-it since. Finally, I had enough; if no one is willing to make a modern version of it, I will make 
-it myself! I started this project without any experience in Font design, nor vector graphics. 
-The next week was spent making iteration after iteration, seeking feedback from other online users 
-who missed Fixedsys and making it slightly better each time. The final ready-to-use font with all 
-materials I made is [available on GitHub](https://github.com/delinx/Fixedsys-Modern). This project taught me that having the audacity to try is 
-very important. I had no business making fonts, yet I made my long-time wish come true! It is not 
-perfect, but it is certainly better than hoping someone else makes it for me. 
 
-
-** Cauliflower Knight [Collaborative Final Uni Project UE4/C++] **
-\nThis is the first project developed by [Walkover Games](https://walkover.games/), Cauliflower Knight is a 3D 
-puzzle platformer where player controls two characters to solve puzzles, traverse 
-levels and combat foes. Trailer of the demo can be found [here](https://youtu.be/378HCHSAj28). 
-
-
-** Arcade Britannia VR [3D Models For UE4 VR Experience] **
-\nThe goal of the project is to create an authentic VR experience of visiting the real arcade, overview of the  
-internship results can be found [here](https://youtu.be/SKBBQA5U170). The project was [taken further](https://cdn.discordapp.com/attachments/705814823354499092/976929686368174100/unknown-33.jpg) by MA 2021 students, I will be joining 
-development team once again during my own MA in 2022.
 
